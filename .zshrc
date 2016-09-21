@@ -77,3 +77,4 @@ PROMPT=$PROMPT'${vcs_info_msg_0_}
 RPROMPT='%(?.%2F.%1F) %? ↩︎%f'
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fpath=(/usr/local/share/zsh-completions $fpath)
