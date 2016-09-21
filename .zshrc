@@ -19,6 +19,9 @@ alias -s {jpg,jpeg,png,pdf}='open -a Preview'
 alias vim='mvim -v'
 alias l='ls'
 alias la='ls -la'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
 
 function peco-select-history() {
     local tac
