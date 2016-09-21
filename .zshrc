@@ -23,6 +23,15 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
+# 入力補完
+autoload -U compinit
+compinit -u
+
+# 訂正
+setopt correct
+
+setopt autocd
+
 function peco-select-history() {
     local tac
     if which tac > /dev/null; then
@@ -66,3 +75,5 @@ PROMPT='%6F%n%f%5F@%f%3F%m%f %14F%~%f '
 PROMPT=$PROMPT'${vcs_info_msg_0_}
  %#  '
 RPROMPT='%(?.%2F.%1F) %? ↩︎%f'
+
+source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
