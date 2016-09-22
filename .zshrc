@@ -33,10 +33,12 @@ alias la='ls -la'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias '..'='cd ..'
+
 
 # 入力補完
 autoload -U compinit
-compinit -u
+compinit -C
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -45,6 +47,8 @@ zstyle ':completion:*' keep-prefix
 zstyle ':completion:*' recent-dirs-insert both
 setopt auto_list  # 補完候補があるときに一覧表示
 setopt auto_menu  # 補完候補があるときに自動表示
+setopt list_packed  # 補完結果を詰めて表示
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 大文字・小文字を区別しない
 
 zstyle ':completion:*' use-cache yes  # 補完候補のキャッシュ
 zstyle ':completion:*' cache-path ~/.zsh/cache  # キャッシュの保管場所
@@ -52,8 +56,10 @@ zstyle ':completion:*' verbose no
 
 # 訂正
 setopt correct
+setopt correct_all
 
 setopt autocd
+setopt auto_pushd
 
 function peco-select-history() {
     local tac
