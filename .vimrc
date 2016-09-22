@@ -74,6 +74,8 @@ call dein#add('lambdalisue/vim-pyenv', {
     \     'python',
     \   ],
     \ })
+call dein#add('tpope/vim-fugitive')
+call dein#add('airblade/vim-gitgutter')
 call dein#add('itchyny/lightline.vim')
 
 " You can specify revision/branch/tag.
@@ -97,7 +99,7 @@ let g:lightline = {
     \   'colorscheme' : 'solarized',
     \   'mode_map' : {'c': 'NORMAL'},
     \   'active' : {
-    \       'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+    \       'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'gitgutter', 'filename' ] ]
     \   },
     \   'component_function' : {
     \       'modified': 'LightLineModified',
