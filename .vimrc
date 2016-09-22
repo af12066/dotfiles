@@ -1,10 +1,12 @@
+set encoding=utf-8  " デフォルトエンコーディング
+
 set autoindent  " インデントの自動化
 set number  " 行番号の可視化
 set showmatch  " 対応するカッコにハイライト表示
 set smarttab
 set textwidth=0  " 改行の自動化をしない
 set colorcolumn=80  " その代わり80文字目にラインを入れる
-set expandtab
+set expandtab  " タブ文字の代わりに半角スペースを使用する
 set tabstop=4
 set shiftwidth=4
 
@@ -12,6 +14,30 @@ set shiftwidth=4
 set nowritebackup
 set nobackup
 set noswapfile
+
+set ignorecase  " 検索時の大文字・小文字を区別しない
+set smartcase  " 検索文字列に大文字が含まれていたら区別
+set incsearch  " インクリメンタルサーチ
+set wrapscan
+set laststatus=2  " ステータスラインの表示
+set cursorline  " カーソル行のハイライト
+set showmode  " 現在のモードを表示
+
+" カッコの補完
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+vnoremap { "zdi^V{<C-R>z}<ESC>
+vnoremap [ "zdi^V[<C-R>z]<ESC>
+vnoremap ( "zdi^V(<C-R>z)<ESC>
+vnoremap " "zdi^V"<C-R>z^V"<ESC>
+vnoremap ' "zdi'<C-R>z'<ESC>
+
+autocmd BufWritePre * :%s/\s\+$//ge  " 保存時に行末の空白を削除
+autocmd BufWritePre * :%s/\t/ /ge  " 保存時にタブ文字をスペースに変換
+
 if &compatible
   set nocompatible               " Be iMproved
 endif
