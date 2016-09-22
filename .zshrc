@@ -26,6 +26,18 @@ alias cp='cp -i'
 # 入力補完
 autoload -U compinit
 compinit -u
+zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+zstyle ':completion:*' keep-prefix
+zstyle ':completion:*' recent-dirs-insert both
+setopt auto_list  # 補完候補があるときに一覧表示
+setopt auto_menu  # 補完候補があるときに自動表示
+
+zstyle ':completion:*' use-cache yes  # 補完候補のキャッシュ
+zstyle ':completion:*' cache-path ~/.zsh/cache  # キャッシュの保管場所
+zstyle ':completion:*' verbose no
 
 # 訂正
 setopt correct
