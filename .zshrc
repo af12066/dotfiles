@@ -9,6 +9,17 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
+# 履歴管理
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt share_history  # 履歴の共有
+setopt hist_ignore_dups  # 直前と同じコマンドを履歴に残さない
+setopt hist_ignore_all_dups  # 重複するコマンドを履歴に残さない
+setopt hist_reduce_blanks
+setopt hist_verify
+setopt hist_no_store  # 履歴にhistoryコマンドを記録しない
+
 alias brwe='brew'
 alias suod='sudo'
 alias weather='curl http://wttr.in/'
