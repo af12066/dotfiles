@@ -1,5 +1,7 @@
 set encoding=utf-8  " デフォルトエンコーディング
 
+set background=dark
+
 set autoindent  " インデントの自動化
 set number  " 行番号の可視化
 set showmatch  " 対応するカッコにハイライト表示
@@ -72,6 +74,7 @@ call dein#add('lambdalisue/vim-pyenv', {
     \     'python',
     \   ],
     \ })
+call dein#add('itchyny/lightline.vim')
 
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -82,12 +85,72 @@ call dein#end()
 " Required:
 filetype plugin indent on
 syntax enable
-set background=dark
 colorscheme solarized
 let g:solarized_termcolors=256
 
 " vim-indent-guidesを自動的にオン
 let g:indent_guides_enable_on_vim_startup = 1
+
+" lightline
+
+let g:lightline = {
+    \   'colorscheme' : 'solarized',
+    \   'mode_map' : {'c': 'NORMAL'},
+    \   'active' : {
+    \       'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+    \   },
+    \   'component_function' : {
+    \       'modified': 'LightLineModified',
+    \       'readonly': 'LightLineReadonly',
+    \       'fugitive': 'LightLineFugitive',
+    \       'filename': 'LightLineFilename',
+    \       'fileformat': 'LightLineFileformat',
+    \       'filetype': 'LightLineFiletype',
+    \       'fileencoding': 'LightLineFileencoding',
+    \       'mode': 'LightLineMode'
+    \   }
+    \ }
+
+function! LightLineModified()
+      return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+      return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! LightLineFilename()
+      return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+              \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+              \  &ft == 'unite' ? unite#get_status_string() :
+              \  &ft == 'vimshell' ? vimshell#get_status_string() :
+              \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+              \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+        return fugitive#head()
+    else
+        return ''
+    endif
+endfunction
+
+function! LightLineFileformat()
+      return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+      return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+      return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+      return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 " Neocomplete
 
