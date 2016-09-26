@@ -78,6 +78,8 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('itchyny/lightline.vim')
 call dein#add('scrooloose/syntastic')
+call dein#add('pmsorhaindo/syntastic-local-eslint.vim')
+
 
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -157,6 +159,15 @@ endfunction
 
 " Neocomplete
 
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" For conceal markers.
+if has('conceal')
+    set conceallevel=2 concealcursor=niv
+endif
+
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
@@ -227,6 +238,14 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+" 構文チェック
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+let g:syntastic_enable_signs = 1  " エラー行にサインを表示
+let g:syntastic_always_populate_loc_list = 0  " location listを常に更新
+let g:syntastic_auto_loc_list = 0  " location listを常に表示
+let g:syntastic_check_on_open = 1  " ファイルを開いたときにチェックを実行
+let g:syntastic_check_on_wq = 0  " wqの際にもチェック
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
