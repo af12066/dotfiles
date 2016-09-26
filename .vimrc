@@ -60,6 +60,9 @@ call dein#add('Shougo/neosnippet-snippets')
 call dein#add('nathanaelkane/vim-indent-guides')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('altercation/vim-colors-solarized')
+call dein#add('othree/html5.vim')
+call dein#add('hail2u/vim-css3-syntax')
+
 call dein#add('davidhalter/jedi-vim', {
     \   'build' : 'git submodule update --init',
     \   'on_ft' : [
