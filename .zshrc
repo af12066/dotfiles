@@ -58,22 +58,24 @@ setopt correct_all
 setopt autocd
 setopt auto_pushd
 
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-        eval $tac | \
-        awk '!a[$0]++' | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+if which peco > /dev/null; then
+    function peco-select-history() {
+        local tac
+        if which tac > /dev/null; then
+            tac="tac"
+        else
+            tac="tail -r"
+        fi
+        BUFFER=$(\history -n 1 | \
+            eval $tac | \
+            awk '!a[$0]++' | \
+            peco --query "$LBUFFER")
+        CURSOR=$#BUFFER
+        zle clear-screen
+    }
+    zle -N peco-select-history
+    bindkey '^r' peco-select-history
+fi
 
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -102,4 +104,6 @@ PROMPT=$PROMPT'${vcs_info_msg_0_}
  %#  '
 RPROMPT='%(?.%2F.%1F) %? ↩︎%f'
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+if [ -d /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
