@@ -25,6 +25,8 @@ set laststatus=2  " ステータスラインの表示
 set cursorline  " カーソル行のハイライト
 set showmode  " 現在のモードを表示
 
+set clipboard+=unnamed,autoselect " OSレベルでクリップボードの共有
+
 " カッコの補完
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
@@ -72,11 +74,11 @@ call dein#add('davidhalter/jedi-vim', {
     \     'vim-pyenv',
     \   ],
     \ })
-call dein#add('lambdalisue/vim-pyenv', {
-    \   'on_ft' : [
-    \     'python',
-    \   ],
-    \ })
+"call dein#add('lambdalisue/vim-pyenv', {
+"    \   'on_ft' : [
+"    \     'python',
+"    \   ],
+"    \ })
 call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('itchyny/lightline.vim')
