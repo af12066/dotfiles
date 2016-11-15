@@ -4,6 +4,7 @@ export LC_ALL=en_US.UTF-8
 export PYENV_ROOT="$HOME/.pyenv"
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
 # 履歴管理
 HISTFILE=~/.zsh_history
