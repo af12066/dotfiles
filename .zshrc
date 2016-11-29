@@ -18,10 +18,15 @@ setopt hist_reduce_blanks
 setopt hist_verify
 setopt hist_no_store  # 履歴にhistoryコマンドを記録しない
 
+function buildgo() {
+    go fmt $1 && go build $1
+}
+
 alias brwe='brew'
 alias suod='sudo'
 alias weather='curl http://wttr.in/'
 alias -s py='python'
+alias -s go=buildgo
 alias -s html='open -a Google\ Chrome'
 alias -s txt='cat'
 alias -s {jpg,jpeg,png,pdf}='open -a Preview'
