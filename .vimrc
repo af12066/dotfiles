@@ -86,6 +86,7 @@ call dein#add('scrooloose/syntastic')
 call dein#add('pmsorhaindo/syntastic-local-eslint.vim')
 call dein#add('mattn/jscomplete-vim')
 call dein#add('myhere/vim-nodejs-complete')
+call dein#add('fatih/vim-go')
 
 
 " You can specify revision/branch/tag.
