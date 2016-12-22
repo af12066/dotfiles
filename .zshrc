@@ -22,15 +22,19 @@ function buildgo() {
     go fmt $1 && go build $1
 }
 
-alias brwe='brew'
+if uname | grep "Darwin" > /dev/null; then
+    alias brwe='brew'
+    alias vim='reattach-to-user-namespace mvim -v'
+    alias -s html='open -a Google\ Chrome'
+elif uname | grep "Linux" > /dev/null; then
+    alias -s html='firefox -new-tab'
+fi
 alias suod='sudo'
 alias weather='curl http://wttr.in/'
 alias -s py='python'
 alias -s go=buildgo
-alias -s html='open -a Google\ Chrome'
 alias -s txt='cat'
 alias -s {jpg,jpeg,png,pdf}='open -a Preview'
-alias vim='reattach-to-user-namespace mvim -v'
 alias l='ls -G'
 alias ls='ls -G'
 alias la='ls -laG'
