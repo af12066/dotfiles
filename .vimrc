@@ -49,6 +49,7 @@ endif
 " Required:
 set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
 
+
 " Required:
 call dein#begin('~/.dein')
 
