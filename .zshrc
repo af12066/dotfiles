@@ -43,6 +43,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias '..'='cd ..'
+if `which pry > /dev/null`; then alias irb='pry'; fi
 
 
 # 入力補完
