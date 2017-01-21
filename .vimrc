@@ -88,6 +88,8 @@ call dein#add('pmsorhaindo/syntastic-local-eslint.vim')
 call dein#add('mattn/jscomplete-vim')
 call dein#add('myhere/vim-nodejs-complete')
 call dein#add('fatih/vim-go')
+call dein#add('tpope/vim-rails')
+call dein#add('Shougo/neocomplcache-rsense.vim')
 
 
 " You can specify revision/branch/tag.
@@ -101,6 +103,9 @@ filetype plugin indent on
 syntax enable
 colorscheme solarized
 let g:solarized_termcolors=256
+
+" rsense
+let g:rsenseUseOmniFunc = 1
 
 " vim-indent-guidesを自動的にオン
 let g:indent_guides_enable_on_vim_startup = 1
@@ -251,6 +256,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " 構文チェック
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_enable_signs = 1  " エラー行にサインを表示
 let g:syntastic_always_populate_loc_list = 0  " location listを常に更新
 let g:syntastic_auto_loc_list = 0  " location listを常に表示
