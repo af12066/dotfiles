@@ -104,9 +104,6 @@ syntax enable
 colorscheme solarized
 let g:solarized_termcolors=256
 
-" rsense
-let g:rsenseUseOmniFunc = 1
-
 " vim-indent-guidesを自動的にオン
 let g:indent_guides_enable_on_vim_startup = 1
 
@@ -248,6 +245,15 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
+
+" rsense
+let g:rsenseHome = '/Users/ma16079/.rbenv/shims/rsense'
+let g:rsenseUseOmniFunc = 1
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
