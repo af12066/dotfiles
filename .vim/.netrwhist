@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/ma16079/IdeaProjects/nwprogramming/files'
-let g:netrw_dirhist_2='/Users/ma16079/IdeaProjects/nwprogramming/playbooks'
-let g:netrw_dirhist_3='/Users/ma16079/IdeaProjects/nwprogramming-anime/playbooks/roles/uwsgi/tasks'
