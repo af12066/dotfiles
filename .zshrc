@@ -7,6 +7,7 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which ndenv > /dev/null; then eval "$(ndenv init -)"; fi
 
 # 履歴管理
 HISTFILE=~/.zsh_history
