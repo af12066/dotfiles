@@ -217,7 +217,7 @@ set statusline=%<%F\ %m%r%h%w
 set statusline+=%=%l,%c\ %{fugitive#statusline()}\ \[%{&fileformat}:%{&fileencoding}\]\ %y
 
 " Insert時にステータスラインをハイライト
-let g:hi_insert = 'highlight StatusLine ctermfg=230 ctermbg=136 cterm=none'
+let g:hi_insert = 'highlight StatusLine guifg=#ffffd7 guibg=#af8700 gui=none ctermfg=230 ctermbg=136 cterm=none'
 if has('syntax')
   augroup InsertHook
     autocmd!
