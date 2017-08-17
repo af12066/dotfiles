@@ -33,6 +33,7 @@ if has("gui_running")
     set fuoptions=maxvert,maxhorz
     au GUIEnter * set fullscreen
 endif
+set completeopt=menuone  " 補完時に表示される項目
 
 " カッコの補完
 inoremap { {}<LEFT>
@@ -93,6 +94,12 @@ if dein#load_state('~/.dein')
   call dein#add('scrooloose/nerdtree')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
   call dein#add('airblade/vim-gitgutter')
+  call dein#add('davidhalter/jedi-vim')
+  call dein#add('lambdalisue/vim-pyenv', {
+        \ 'depends' : ['davidhalter/jedi-vim'],
+        \ 'autoload' : {
+        \   'filetypes' : ['python'],
+        \ }})
 
   " Required:
   call dein#end()
@@ -139,6 +146,7 @@ let g:monster#completion#rcodetools#backend = "async_rct_complete"
 let g:neocomplete#sources#omni#input_patterns = {
 \   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
 \   "go" : '\h\w\.\w*',
+\   "python" : '\h\w*\|[^. \t]\.\w*',
 \}
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
@@ -158,9 +166,12 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=jedi#completions
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" jedi-vim
+let g:jedi#show_function_definition = 0  " 補完候補表示時に詳細を表示しない
 
 " neosnippet
 " Plugin key-mappings.
