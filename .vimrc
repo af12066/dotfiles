@@ -249,3 +249,10 @@ endfunction
 if has('unix') && !has('gui_running')
   inoremap <silent> <ESC> <ESC>
 endif
+
+" Templates
+autocmd BufNewFile *.tex 0read ~/.vim/template/latex.tex
+autocmd BufNewFile *.html 0read ~/.vim/template/index.html
+autocmd BufNewFile *.sh 0read ~/.vim/template/bash.sh
+autocmd BufNewFile *.c 0read ~/.vim/template/clanguage.c
+autocmd BufNewFile *.py 0read ~/.vim/template/python.py
