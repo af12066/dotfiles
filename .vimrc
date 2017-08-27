@@ -63,6 +63,7 @@ augroup fileTypeIndent
   autocmd BufNewFile,BufRead *.html,*.css,*.scss setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
+let g:tex_flavor = 'latex'
 
 if &compatible
   set nocompatible               " Be iMproved
@@ -100,6 +101,7 @@ if dein#load_state('~/.dein')
         \ 'autoload' : {
         \   'filetypes' : ['python'],
         \ }})
+  call dein#add('lervag/vimtex')
 
   " Required:
   call dein#end()
@@ -147,6 +149,7 @@ let g:neocomplete#sources#omni#input_patterns = {
 \   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
 \   "go" : '\h\w\.\w*',
 \   "python" : '\h\w*\|[^. \t]\.\w*',
+\   "tex" : g:vimtex#re#neocomplete,
 \}
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
