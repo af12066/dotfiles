@@ -174,7 +174,7 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " jedi-vim
-let g:jedi#show_function_definition = 0  " 補完候補表示時に詳細を表示しない
+let g:jedi#show_call_signatures = 0  " 補完候補表示時に詳細を表示しない
 
 " neosnippet
 " Plugin key-mappings.
