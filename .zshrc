@@ -1,7 +1,6 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-
-export PYENV_ROOT="$HOME/.pyenv"
+export TERM=xterm-256color
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
@@ -26,7 +25,7 @@ function buildgo() {
 
 if uname | grep "Darwin" > /dev/null; then
     alias brwe='brew'
-    alias vim='reattach-to-user-namespace mvim -v'
+    alias vim='mvim -v'
     alias -s html='open -a Google\ Chrome'
 elif uname | grep "Linux" > /dev/null; then
     alias -s html='firefox -new-tab'
