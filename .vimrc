@@ -29,10 +29,10 @@ set hlsearch  " 検索結果のハイライト表示
 set clipboard+=unnamed,autoselect " OSレベルでクリップボードの共有
 set guifont=MyricaM\ Monospace:h15  " GVim のフォント設定
 " GVim 起動時にフルスクリーン設定
-if has("gui_running")
-    set fuoptions=maxvert,maxhorz
-    au GUIEnter * set fullscreen
-endif
+" if has("gui_running")
+"     set fuoptions=maxvert,maxhorz
+"     au GUIEnter * set fullscreen
+" endif
 set completeopt=menuone  " 補完時に表示される項目
 
 " カッコの補完
