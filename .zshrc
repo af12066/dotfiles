@@ -119,3 +119,7 @@ RPROMPT='%(?.%2F.%1F) %? ↩︎%f'
 if [ -d /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
+
+# awscli
+source /usr/local/share/zsh/site-functions/_aws
+fpath=(/usr/local/share/zsh-completions $fpath)
