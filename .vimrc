@@ -213,7 +213,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 let g:syntastic_go_checkers = ['go']
 let g:syntastic_ruby_checkers = ['rubocop']
-
+let g:syntastic_markdown_checkers = ['textlint']
+let g:syntastic_text_checkers = ['textlint']
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'passive_filetypes': ['markdown', 'text'] }
 " ステータスラインの設定
 " fugitive#statusline()は vim-fugitive が必要
 set statusline=%<%F\ %m%r%h%w
