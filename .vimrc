@@ -96,6 +96,7 @@ if dein#load_state('~/.dein')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('davidhalter/jedi-vim')
+  call dein#add('editorconfig/editorconfig-vim')
   call dein#add('lambdalisue/vim-pyenv', {
         \ 'depends' : ['davidhalter/jedi-vim'],
         \ 'autoload' : {
@@ -259,3 +260,4 @@ autocmd BufNewFile *.html 0read ~/.vim/template/index.html
 autocmd BufNewFile *.sh 0read ~/.vim/template/bash.sh
 autocmd BufNewFile *.c 0read ~/.vim/template/clanguage.c
 autocmd BufNewFile *.py 0read ~/.vim/template/python.py
+autocmd BufNewFile *-tex.md 0read ~/.vim/template/markdown-to-tex.md
