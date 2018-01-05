@@ -1,0 +1,8 @@
+[credential]
+	helper = osxkeychain
+[commit]
+	gpgsign = true
+[core]
+	editor = vim
+	autocrlf = input
+	safecrlf = true
