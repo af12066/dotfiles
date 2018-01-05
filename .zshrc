@@ -23,7 +23,6 @@ setopt hist_no_store  # 履歴にhistoryコマンドを記録しない
 # typo 修正やエイリアスの設定
 if [[ "$(uname)" == "Darwin" ]]; then
     alias brwe='brew'
-    alias vim='mvim -v'
     if [[ -e /Applications/Google\ Chrome.app ]]; then alias -s html='open -a Google\ Chrome'; fi
     alias -s {jpg,jpeg,png,pdf}='open -a Preview'
     if [[ -e /Applications/Google\ Chrome.app ]]; then alias chrome='open -a Google\ Chrome'; fi
@@ -33,6 +32,18 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [[ "$(uname)" == "Linux" ]]; then
     alias -s html='firefox -new-tab'
 fi
+function extract() {
+  case $1 in
+    *.tar.gz|*.tgz) tar xzvf "$1";;
+    *.tar.xz) tar Jxvf "$1";;
+    *.zip) unzip "$1";;
+    *.tar.bz2|*.tbz) tar xjvf "$1";;
+    *.gz) gunzip "$1";;
+    *.bz2) bzip2 -dc "$1";;
+    *.tar) tar xvf "$1";;
+  esac
+}
+alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 alias suod='sudo'
 alias wttr='curl http://wttr.in/'
 alias -s py='python'
@@ -53,6 +64,7 @@ if [[ -d /usr/local/share/zsh-completions ]]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
 autoload -Uz compinit && compinit
+fignore=(.o .dvi .aux .log .toc .hi .swp .sw .bak .bbl .blg .nav .snm .toc .pyc .git)
 zstyle ':completion:*:default' menu select=2  # 補完候補を矢印キーで選択できるように
 if [[ -f ~/.dircolors ]]; then eval $(dircolors ~/.dircolors); fi
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # ls をカラフルに
@@ -62,6 +74,7 @@ zstyle ':completion:*' keep-prefix
 zstyle ':completion:*' recent-dirs-insert both
 setopt auto_list  # 補完候補があるときに一覧表示
 setopt auto_menu  # 補完候補があるときに自動表示
+setopt auto_param_slash  # ディレクトリ名の補完で末尾の / を自動的に付加
 setopt list_packed  # 補完結果を詰めて表示
 
 zstyle ':completion:*' use-cache yes  # 補完候補のキャッシュ
@@ -71,6 +84,8 @@ zstyle ':completion:*' verbose no
 # 訂正
 setopt correct
 setopt correct_all
+# インタラクティブシェルでもコメントを有効にする
+setopt interactive_comments
 
 # ディレクトリ名を入力するだけで cd する
 setopt autocd
