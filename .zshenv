@@ -6,8 +6,6 @@ export GOPATH="${HOME}/go"
 export NDENV_ROOT="${HOME}/.ndenv"
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
-export PATH=$PYENV_ROOT/shims:$RBENV_ROOT/shims:$PLENV_ROOT/shims:$GOENV_ROOT/shims:$GOPATH/bin:$NDENV_ROOT/shims:/usr/local/bin:$PATH
-
 if [[ "$(uname)" == 'Darwin' ]]; then
     PATH_COREUTILS="/usr/local/opt/coreutils/libexec/gnubin"
     PATH_CURL="/usr/local/opt/curl/bin"
@@ -21,5 +19,7 @@ if [[ "$(uname)" == 'Darwin' ]]; then
         export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters;
     fi
 fi
+
+export PATH=$PYENV_ROOT/shims:$RBENV_ROOT/shims:$PLENV_ROOT/shims:$GOENV_ROOT/shims:$GOPATH/bin:$NDENV_ROOT/shims:$PATH
 
 source ~/.key_list
