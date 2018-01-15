@@ -26,6 +26,9 @@ if [[ "$(uname)" == 'Darwin' ]]; then
 fi
 
 export PATH=$PYENV_ROOT/shims:$RBENV_ROOT/shims:$PLENV_ROOT/shims:$GOENV_ROOT/shims:$GOPATH/bin:$NDENV_ROOT/shims:$PATH
+if which npm > /dev/null; then
+    export NODE_PATH=$(npm root -g)
+fi
 typeset -U path manpath
 
 source ~/.key_list
