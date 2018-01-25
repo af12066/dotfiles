@@ -128,14 +128,13 @@ setopt promptsubst  # 終了ステータスを表示
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}✅ "
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}🌟 "
-zstyle ':vcs_info:*' formats "%F{green}%c%u(%b)%f"
+zstyle ':vcs_info:git:*' stagedstr "%{%F{yellow}%}✅ "
+zstyle ':vcs_info:git:*' unstagedstr "%{%F{red}%}🌟 "
+zstyle ':vcs_info:*' formats "%{%F{green}%}%c%u(%b)%f"
 zstyle ':vcs_info:*' actionformats '(%b|%a)'
 precmd() {
     LANG=en_US.UTF-8 vcs_info
 }
-PROMPT='%6F%n%f%5F@%f%3F%m%f %14F%~%f '
-PROMPT=$PROMPT'${vcs_info_msg_0_}
- %# '
-RPROMPT='%(?.%2F.%1F) %? ↩︎%f'
+PROMPT='%{%6F%}%n%f%{%5F%}@%f%{%3F%}%m%f %{%14F%}%~%f ${vcs_info_msg_0_}
+ %#  '
+RPROMPT='%(?.%{%2F%}.%{%1F%}) %? %f'
