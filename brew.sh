@@ -33,6 +33,9 @@ brew install zsh
 brew install zsh-completions
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
+for f in $(find /usr/local/share/zsh-syntax-highlighting/highlighters -name "*.zsh"); do
+  zcompile $f
+done
 
 # 開発ツール各種
 brew install pyenv
