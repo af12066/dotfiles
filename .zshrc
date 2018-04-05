@@ -56,7 +56,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias '..'='cd ..'
 if $(which pry > /dev/null); then alias irb='pry'; fi
-if $(which ipython > /dev/null); then alias python='ipython'; fi
+if $(which nvim > /dev/null); then alias vim='nvim'; fi
 
 # 入力補完
 if [[ -d /usr/local/share/zsh-completions ]]; then
