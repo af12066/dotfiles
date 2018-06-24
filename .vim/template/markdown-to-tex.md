@@ -1,7 +1,0 @@
----
-title: ''
-author:
-date:
-abstract: |
-
----
