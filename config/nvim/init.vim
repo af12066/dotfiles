@@ -41,20 +41,20 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/takuma/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/takuma/.config/nvim/dein')
-  call dein#begin('/Users/takuma/.config/nvim/dein')
+if dein#load_state($HOME.'/.config/nvim/dein')
+  call dein#begin($HOME.'/.config/nvim/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/takuma/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add($HOME.'/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
 
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('zchee/deoplete-go', {'build': 'make', 'on_ft': ['go']})
   call dein#add('tpope/vim-fugitive')
-  call dein#add('soramugi/auto-ctags.vim')
+  call dein#add('zebult/auto-gtags.vim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
   call dein#add('othree/yajs.vim', {'on_ft': ['javascript']})
@@ -93,10 +93,8 @@ let g:deoplete#sources#ternjs#filetypes = [
 " deoplete-go
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
-" auto-ctags
-let g:auto_ctags = 1
-let g:auto_ctags_directory_list = ['.git']
-
+" gtags
+source $HOME/.config/nvim/gtags.vim
 " nerdtree
 autocmd vimenter * NERDTree
 let NERDTreeShowHidden = 1
