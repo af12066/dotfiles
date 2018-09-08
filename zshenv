@@ -9,5 +9,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=/usr/local/opt/zplug
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
+export GTAGSLABEL="pygments"
 
 source ${HOME}/.env.sh

@@ -41,7 +41,11 @@ bindkey '^r' peco-select-history
 if (( $+commands[nvim] )); then
   alias vim=nvim
 fi
+alias d=docker
+alias g=git
 alias k=kubectl
+alias v=vim
+alias l="ls"
 alias ls="ls -G"
 alias la="ls -Glah"
 alias ll="ls -Glh"
