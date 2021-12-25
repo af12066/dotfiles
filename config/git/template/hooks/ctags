@@ -1,3 +1,0 @@
-#!/bin/sh
-rm -f .git/tags
-ctags -f .git/tags

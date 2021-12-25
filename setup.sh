@@ -1,10 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-set -eu
+cd $(dirname "$0")
 
-DIR="$(dirname $0)"
-cd "${DIR}"
+mkdir -p ~/.config/tmux
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/git
 
-for f in $(ls | grep -v ${0##*/}); do
-  ln -s "${PWD}/${f}" ~/.${f}
-done
+ln -sf ${PWD}/tmux.conf ~/.config/tmux/tmux.conf
+ln -sf ${PWD}/gitignore ~/.config/git/ignore
+ln -sf ${PWD}/init.vim ~/.config/nvim/init.vim
+ln -sf ${PWD}/zshenv ~/.zshenv
+ln -sf ${PWD}/zshrc ~/.zshrc
